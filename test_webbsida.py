@@ -25,7 +25,7 @@ class TestWebsite(unittest.TestCase):
         actual = self.driver.find_element(By.XPATH, '//*[@id="header-drop-down-menu"]/div/div[1]/div/div/h1').text
         self.assertEqual(expected, actual)
 
-    # (TA BORT TIME.SLEEP) Test 2: Test som verifierar att länken "Kundvagn" är tom. 
+    # Test 2: Test som verifierar att länken "Kundvagn" är tom. 
     def test_shopping_cart(self):
         time.sleep(3)
         self.driver.find_element(By.ID, 'shopping-cart-icon-bg').click()
@@ -34,7 +34,7 @@ class TestWebsite(unittest.TestCase):
         actual = self.driver.find_element(By.XPATH, '//*[@id="emptyCartMessage"]').text
         self.assertEqual(expected, actual)
 
-    # (TA BORT TIME.SLEEP) Test 3: Navigera till "Mina sidor" och därefter till "E-postadress" och logga in. Verifiera att man har loggat in på korrekt sätt. 
+    # Test 3: Navigera till "Mina sidor" och därefter till "E-postadress" och logga in. Verifiera att man har loggat in på korrekt sätt. 
     def test_login_page(self):
         time.sleep(3)
         self.driver.find_element(By.XPATH,'//*[@id="topLogin"]/span').click()
@@ -64,7 +64,6 @@ class TestWebsite(unittest.TestCase):
         search.send_keys(Keys.RETURN)
         self.driver.find_element(By.XPATH, '//*[@id="productList"]/div/div[1]/div/div[2]/div[2]/div[2]/div/div[1]/div[1]/a/span').click()
         self.driver.find_element(By.XPATH, '//*[@id="BuyButton_ProductPageStandard_1020736"]').click()
-        # self.driver.find_element(By.CSS_SELECTOR, "#BuyButton_ProductPageStandard_1020736").click()
         self.driver.find_element(By.XPATH, '//*[@id="insuranceCollapse"]/div/div[1]/div[2]/div/div/a[2]').click()
         self.driver.find_element(By.XPATH, '//*[@id="accessoriesModalActionBtns"]/a[2]').click()
         
@@ -79,6 +78,8 @@ class TestWebsite(unittest.TestCase):
         expected_price = "3 980:-"
         actual_price = self.driver.find_element(By.XPATH, '//*[@id="cartListContent"]/div[1]/div/form/div[1]/div/div/div[2]/div/div[2]/div/div[2]/div/div[1]/span').text
         self.assertEqual(expected_price, actual_price)
+
+
 
 
 
