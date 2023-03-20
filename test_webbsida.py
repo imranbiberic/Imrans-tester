@@ -89,16 +89,3 @@ class TestWebsite(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
-
-
-
-
-
-
-# self.mywait.until(EC.element_to_be_clickable((By.XPATH,"(//a[normalize-space()='Acceptera'])[1]"))).click()
-# self.mywait.until(EC.presence_of_element_located((By.XPATH,"//p[@class='language-text'][normalize-space()='LANGUAGE']")))
-
-# ovaj rad:
-# self.driver.find_element(By.XPATH,"//p[@class='language-text'][normalize-space()='LANGUAGE']")
-# zamjenis sa ovim:
-# self.mywait.until(EC.presence_of_element_located((By.XPATH,"//p[@class='language-text'][normalize-space()='LANGUAGE']")))
