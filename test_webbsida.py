@@ -62,7 +62,7 @@ class TestWebsite(unittest.TestCase):
         search = self.driver.find_element(By.CSS_SELECTOR, "#search-form > div > div > input.form-control.searchInput")
         search.send_keys('Apple iPad (9th gen) 10,2" 64GB Wi-Fi Space Grey')
         search.send_keys(Keys.RETURN)
-        self.driver.execute_script("scrollBy(0,200)")
+        # self.driver.execute_script("scrollBy(0,200)")
         self.driver.find_element(By.XPATH, '//*[@id="productList"]/div/div[1]/div/div[2]/div[2]/div[2]/div/div[1]/div[1]/a/span').click()
         self.driver.find_element(By.XPATH, '//*[@id="BuyButton_ProductPageStandard_1020736"]').click()
         self.driver.find_element(By.XPATH, '//*[@id="insuranceCollapse"]/div/div[1]/div[2]/div/div/a[2]').click()
