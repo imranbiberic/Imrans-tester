@@ -52,9 +52,11 @@ class TestWebsite(unittest.TestCase):
     def test_address(self):
         self.driver.find_element(By.CSS_SELECTOR, "#desktop-header-menu > li:nth-child(4) > a > span").click()
         self.driver.execute_script("scrollBy(0, 1500)")
-        self.driver.find_element(By.CSS_SELECTOR, "#__next > main > div > div > div > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-4.css-76wze3 > div:nth-child(13) > div > div.MuiCardMedia-root.css-pqdqbj > a > img").click()
+        # self.driver.find_element(By.CSS_SELECTOR, "#__next > main > div > div > div > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-4.css-76wze3 > div:nth-child(13) > div > div.MuiCardMedia-root.css-pqdqbj > a > img").click()
+        self.driver.find_element(By.XPATH, '//*[@id="__next"]/div/div/div/div/div[2]/div[13]/div/div[1]/a/span/img').click()
         expected = 'Nornegatan 5'
-        actual = self.driver.find_element(By.CSS_SELECTOR, "#__next > main > div > div > div > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-6.css-wwiify > div > p:nth-child(2)").text
+        # actual = self.driver.find_element(By.CSS_SELECTOR, "#__next > main > div > div > div > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-6.css-wwiify > div > p:nth-child(2)").text
+        actual = self.driver.find_element(By.XPATH, '//*[@id="__next"]/div/div/div/div/div[1]/div/p[1]').text
         self.assertEqual(expected, actual)
         
     # Test 5: Navigera till Apple iPad via sökfältet och verifiera att produkten har lagts i kassan med rätt pris på korrekt sätt
@@ -90,5 +92,3 @@ class TestWebsite(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
-
-# yeah 
