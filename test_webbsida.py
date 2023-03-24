@@ -52,33 +52,31 @@ class TestWebsite(unittest.TestCase):
     def test_address(self):
         self.driver.find_element(By.CSS_SELECTOR, "#desktop-header-menu > li:nth-child(4) > a > span").click()
         self.driver.execute_script("scrollBy(0, 1500)")
-        # self.driver.find_element(By.CSS_SELECTOR, "#__next > main > div > div > div > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-4.css-76wze3 > div:nth-child(13) > div > div.MuiCardMedia-root.css-pqdqbj > a > img").click()
         self.driver.find_element(By.XPATH, '//*[@id="__next"]/div/div/div/div/div[2]/div[13]/div/div[1]/a/span/img').click()
         expected = 'Nornegatan 5'
-        # actual = self.driver.find_element(By.CSS_SELECTOR, "#__next > main > div > div > div > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-6.css-wwiify > div > p:nth-child(2)").text
         actual = self.driver.find_element(By.XPATH, '//*[@id="__next"]/div/div/div/div/div[1]/div/p[1]').text
         self.assertEqual(expected, actual)
         
-    # Test 5: Navigera till Apple iPad via sökfältet och verifiera att produkten har lagts i kassan med rätt pris på korrekt sätt
-    def test_apple_ipad(self):
+    # Test 5: Navigera till Playstation 5 via sökfältet och verifiera att produkten har lagts i kassan med rätt pris på korrekt sätt
+    def test_playstation_5(self):
         search = self.driver.find_element(By.CSS_SELECTOR, "#search-form > div > div > input.form-control.searchInput")
-        search.send_keys('Apple iPad (9th gen) 10,2" 64GB Wi-Fi Space Grey')
+        search.send_keys('Playstation 5')
         search.send_keys(Keys.RETURN)
-        self.driver.find_element(By.XPATH, '//*[@id="productList"]/div/div[1]/div/div[2]/div[2]/div[2]/div/div[1]/div[1]/a/span').click()
-        self.driver.find_element(By.XPATH, '//*[@id="BuyButton_ProductPageStandard_1020736"]').click()
+        self.driver.find_element(By.XPATH, '//*[@id="productList"]/div/div[1]/div/div[2]/div[2]/div[1]/div/a/picture/img').click()
+        self.driver.find_element(By.XPATH, '//*[@id="BuyButton_ProductPageStandard_1027489"]').click()
         self.driver.find_element(By.XPATH, '//*[@id="insuranceCollapse"]/div/div[1]/div[2]/div/div/a[2]').click()
         self.driver.find_element(By.XPATH, '//*[@id="accessoriesModalActionBtns"]/a[2]').click()
-        
+
         expected_page_title = "NetOnNet - Kassan"
         actual_page_title = self.driver.title
         self.assertEqual(expected_page_title, actual_page_title)
-        
-        expected_product = 'Apple iPad (9th gen) 10,2" 64GB Wi-Fi Space Grey'
+
+        expected_product = 'Sony PlayStation 5 (C-Chassi)'
         actual_product = self.driver.find_element(By.XPATH, '//*[@id="cartListContent"]/div[1]/div/form/div[1]/div/div/div[2]/div/div[2]/div/div[1]/div/div[1]/a').text
         self.assertEqual(expected_product, actual_product)
-        
-        expected_price = "3 980:-"
-        actual_price = self.driver.find_element(By.XPATH, '//*[@id="cartListContent"]/div[1]/div/form/div[1]/div/div/div[2]/div/div[2]/div/div[2]/div/div[1]/span').text
+
+        expected_price = '6 990:-'
+        actual_price = self.driver.find_element(By.XPATH, '//*[@id="cartListContent"]/div[1]/div/form/div[2]/div[2]/div/div/div[1]/span[2]').text
         self.assertEqual(expected_price, actual_price)
 
 
@@ -93,4 +91,4 @@ class TestWebsite(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.quit()
 
-#yeah
+#MANNEN VAD HÄNDER
